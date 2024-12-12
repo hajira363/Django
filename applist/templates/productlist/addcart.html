@@ -1,0 +1,59 @@
+{% extends "productlist/master.html" %}
+{% load static %}
+{% block title %} Home page {% endblock %}
+{% block content %}
+
+
+<div class="container my-5">
+    <h2 class="mb-4">ADD TO CART</h2>
+
+    <div class="table-responsive">
+        
+                <!-- Product 1 -->
+                {% if not cart %}
+                <h5>no items in cart</h5>
+                {% else %}
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Images</th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                {% for item in cart %}
+                <tr>
+                    <th scope="row"><img src="{% static item.image %}" alt="Product Image" width="100px"></th>
+                    <td>{{item.name}}</td>
+                    <td>₹ {{item.price}}</td>
+                    <td>
+                        <input type="number" class="form-control" value="{{item.quantity}}" min="1"
+                            style="width: 80px;">
+                    </td>
+                    <td>₹ {{item.subTotal}}</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm">Remove</button>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+
+
+
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Total Section -->
+    <div class="d-flex justify-content-between">
+        <h4>Total: ₹{{toalprice}}</h4>
+        <button class="btn btn-primary">Place the order</button>
+    </div>
+
+</div>
+
+{% endblock %}

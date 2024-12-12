@@ -1,0 +1,40 @@
+{% extends "productlist/master.html" %}
+{% load static %}
+{% block title %} Home page {% endblock %}
+{% block content %}
+
+<!-- <style>
+  .row {
+    gap: 20px;
+  }
+</style> -->
+
+<div class="container mt-4">
+  <div class="d-flex flex-wrap">
+    <!-- Card 1 -->
+     {% for product in products %}
+    
+
+      <div class="card m-2 p-2" style="width: 16rem;" >
+        <a href="{% url 'single' forloop.counter0 %}">
+        <img src="{% static product.image %}" class="card-img-top m-2" alt="..." height="200PX"  width="200px">
+
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">{{product.name}}</h5>
+          <!-- <p class="card-text">{{product.description}} -->
+            <!-- </p> -->
+            <h6>{{product.price}}</h6>
+          <a href="{% url 'single' forloop.counter0 %}" class="btn btn-primary">Viwe Product</a>
+        </div>
+      </div>
+
+    
+{% endfor %}
+  </div>
+</div>
+
+
+        
+
+        {% endblock %}

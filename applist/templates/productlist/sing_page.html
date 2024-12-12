@@ -1,0 +1,66 @@
+{% extends "productlist/master.html" %}
+{% load static %}
+{% block title %} Home page {% endblock %}
+{% block content %}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{% static product.image %}" alt="Product Image" class="img-fluid rounded" style="width: 900px;">
+        </div>
+
+        <div class="col-md-6">
+            <h2>{{product.name}}</h2>
+            <p>Category: Electronics</p>
+            <p>{{product.price}}</p>
+
+            <p>{{product.description}}</p>
+            <!-- <div class="mb-3">
+                <label for="color">Color</label>
+                <select>
+                    <option selected>Choose color</option>
+                    <option>Black</option>
+                    <option>White</option>
+                    <option>Blue</option>
+                    <option >Emerald green</option>
+                    <option>silver</option>
+                </select>
+            </div> -->
+            
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="quantity" >Quantity</label>
+                    <input type="number" name="quantity">
+                </div>
+                
+    
+                <button type="submit" class="btn btn-primary btn-lag me-2" >Add to Cart</button>
+            </form>
+            
+
+            <!-- <div class="mt-4">
+                <h5>Product Features:</h5>
+                <ul>
+                    <li>6.7-inch OLED Display: Enjoy vibrant, true-to-life colors and a crystal-clear display with
+                        Huawei's large OLED screen.</li>
+                    <li>50MP Ultra Vision Camera</li>
+                    <li>5000mAh Battery</li>
+                    <li>Huawei Kirin 9000 Processor</li>
+                    <li>5G Connectivity</li>
+                    <li>Huawei Histen Sound Technology:</strong> Enjoy immersive audio with Huawei's advanced sound
+                        system.</li>
+                </ul>
+            </div> -->
+            <div class="mt-4">
+                <p>Share this product:</p>
+                <a href="#" class="btn btn-outline-primary btn-sm me-2">Facebook</a>
+                <a href="#" class="btn btn-outline-info btn-sm me-2">Twitter</a>
+                <a href="#" class="btn btn-outline-danger btn-sm">Instagram</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
